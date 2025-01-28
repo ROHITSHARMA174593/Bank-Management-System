@@ -1,3 +1,6 @@
+import com.mysql.cj.jdbc.ConnectionImpl;
+
+
 import javax.swing.*; // SetBounds and JFrames
 import java.awt.*;// Fonts and Colors
 import java.awt.event.*;// Action Listener and Action Event
@@ -250,8 +253,8 @@ public class SignUpOne extends JFrame implements ActionListener{
                 DC.st.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Form submitted successfully!");
 
-                setVisible(false);// jisse ki jo page abhi open hoga current me vo inVisible ho jaayega and
-                new SignUpTwo().setVisible(true);// SignUpTwo page visible ho jaayega
+//                setVisible(false);// jisse ki jo page abhi open hoga current me vo inVisible ho jaayega and
+//                new SignUpTwo().setVisible(true);// SignUpTwo page visible ho jaayega
             }
         }catch(Exception err){
            err.printStackTrace();
@@ -261,10 +264,10 @@ public class SignUpOne extends JFrame implements ActionListener{
 
 // todo :: abhi ke liye maine isko try block ke else ke ander rakh diya hai baad me agar kuch aur functioinality add karni hui to fir alag se rakh denge
         // Sign Up one(1) Page me jo last Next ka button hai uss per koi click karega to SignUpTwo page visible hoga!!!
-//        if(ae.getSource() == next){
-//            setVisible(false);
-//            new SignUpTwo().setVisible(true);
-//        }// Iss kaam ko direct Else(in Try Block) ki condiiton me bhi kar sakte hai bina kisi getSource ke
+        if(ae.getSource() == next){
+            setVisible(false);
+            new SignUpTwo().setVisible(true);
+        }// Iss kaam ko direct Else(in Try Block) ki condiiton me bhi kar sakte hai bina kisi getSource ke
 
 
 

@@ -107,7 +107,8 @@ public class Login extends JFrame implements ActionListener{// implement karvaan
             DatabaseConnection DC = new DatabaseConnection();
             String cardNumber = CardNumField.getText();
             String pinNumber = PinInputField.getText();// iss per yellow line isliye aa rhi hai kyuki pin ek password field hai aur password ke liye getText ka use nahi karna chahiye but abhi koi option nahi hai
-            String query = "SELECT * FROM login WHERE Card_Number = '"+cardNumber+"' AND Pin_Number = '"+pinNumber+"' ";// yaha per jo string ke ander Card_Number and Pin_Number de rakha hai ye database me jo table ka name hai vo hi dena hai kyuki ye ek query hai SQL ki
+            String query = "SELECT * FROM login WHERE Card_Number = '"+cardNumber+"' AND Pin_Number = '"+pinNumber+"'";// yaha per jo string ke ander Card_Number and Pin_Number de rakha hai ye database me jo table ka name hai vo hi dena hai kyuki ye ek query hai SQL ki
+
 
             try{
                 ResultSet RS =  DC.st.executeQuery(query);
@@ -118,7 +119,7 @@ public class Login extends JFrame implements ActionListener{// implement karvaan
                     JOptionPane.showMessageDialog(null, "Incorrect Card Number and Pin");
                 }
             }catch(Exception err){
-                System.out.println(err);
+                err.printStackTrace();
             }
         }else if(ae.getSource() == signUpButton){
             setVisible(false); // abhi jo bhi page hoga vo to visible hoga nahi

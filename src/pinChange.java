@@ -1,12 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
 
 public class pinChange extends JFrame implements ActionListener{
 
     JButton change, back;
     JTextField pinTextField, reEnterPinTextField;
-    pinChange(String pinChange){
+    String pinNumber;
+    pinChange(String pinNumber){
+        this.pinNumber = pinNumber;
+
         setLayout(null);
 
 
@@ -80,7 +84,48 @@ public class pinChange extends JFrame implements ActionListener{
 
     }
     public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == change){
+            try{
+                String newPin = pinTextField.getText();
+                String rePin = reEnterPinTextField.getText();
+                if(!newPin.equals(rePin)){
+                    JOptionPane.showMessageDialog(null, "Entered Pin Does Not Match.");
+                    return;
+                }
 
+                if(newPin.equals("")){
+                    JOptionPane.showMessageDialog(null, "Please Enter New Pin");
+                    return;
+                }
+
+                if(rePin.equals("")){
+                    JOptionPane.showMessageDialog(null, "Please Re-Enter new Pin");
+                    return;
+                }
+
+
+                DatabaseConnection DC = new DatabaseConnection();
+                String query1 = "UPDATE Bank SET Pin_Number = '"+rePin+"' WHERE Pin_Number='"+pinNumber+"'";
+                String query2 = "UPDATE login SET Pin_Number = '"+rePin+"' WHERE Pin_Number='"+pinNumber+"'";
+                String query3 = "UPDATE signupthree SET Pin_Number = '"+rePin+"' WHERE Pin_Number='"+pinNumber+"'";
+
+                DC.st.executeUpdate(query1);
+                DC.st.executeUpdate(query2);
+                DC.st.executeUpdate(query3);
+
+                JOptionPane.showMessageDialog(null, "PIN Change Successfully");
+
+                //Now the Update Pin in DATABASE
+                setVisible(false);
+                new Tranjactions(rePin).setVisible(true);
+
+            }catch(Exception err){
+                System.out.println(err);
+            }
+        }else {
+            setVisible(false);
+            new Tranjactions(pinNumber).setVisible(true);
+        }
     }
     public static void main(String[] args){
         new pinChange("").setVisible(true);
