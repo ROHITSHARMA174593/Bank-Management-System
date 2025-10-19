@@ -10,7 +10,7 @@ public class DatabaseConnection{
     public DatabaseConnection(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver"); // MySQL driver load karein
-            conn = DriverManager.getConnection("jdbc:mysql:///BankManagmentSystem", "root", "4369");
+            conn = DriverManager.getConnection("jdbc:mysql:///BankManagementSystem", "root", "10134369");
             st = conn.createStatement();
         } catch(Exception err){
             System.out.println(err);
