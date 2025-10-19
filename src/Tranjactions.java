@@ -120,6 +120,14 @@ public class Tranjactions extends JFrame implements ActionListener{
         }else if(ae.getSource() == fastcash){
             setVisible(false);
             new FastCash(pinNumber).setVisible(true);
+        }else if(ae.getSource() == pinchange){
+            setVisible(false);
+            new pinChange(pinNumber).setVisible(true);
+        }else if(ae.getSource() == balanceenquiry){
+            setVisible(false);
+            new BalanceInquiry(pinNumber).setVisible(true);
+        }else if(ae.getSource() == ministatement){
+            new MiniStatement(pinNumber).setVisible(true);
         }
     }
 

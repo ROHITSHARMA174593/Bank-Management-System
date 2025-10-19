@@ -6,7 +6,7 @@ import java.sql.Connection;
 public class pinChange extends JFrame implements ActionListener{
 
     JButton change, back;
-    JTextField pinTextField, reEnterPinTextField;
+    JPasswordField pinTextField, reEnterPinTextField;
     String pinNumber;
     pinChange(String pinNumber){
         this.pinNumber = pinNumber;
@@ -36,10 +36,10 @@ public class pinChange extends JFrame implements ActionListener{
         pinText.setForeground(Color.WHITE);
         image.add(pinText);
 
-        pinTextField = new JTextField();
+        pinTextField = new JPasswordField();
         pinTextField.setBounds(290, 360, 220, 30);
         pinTextField.setFont(new Font("Sans-Serif", Font.BOLD, 16));
-        pinTextField.setForeground(Color.WHITE);
+        pinTextField.setForeground(Color.BLACK);
         image.add(pinTextField);
 
 
@@ -51,10 +51,10 @@ public class pinChange extends JFrame implements ActionListener{
         reEnterPinText.setForeground(Color.WHITE);
         image.add(reEnterPinText);
 
-        reEnterPinTextField = new JTextField();
+        reEnterPinTextField = new JPasswordField();
         reEnterPinTextField.setBounds(290, 420, 220, 30);
         reEnterPinTextField.setFont(new Font("Sans-Serif", Font.BOLD, 16));
-        reEnterPinTextField.setForeground(Color.WHITE);
+        reEnterPinText.setForeground(Color.BLACK);
         image.add(reEnterPinTextField);
 
 
@@ -108,12 +108,12 @@ public class pinChange extends JFrame implements ActionListener{
                 String query1 = "UPDATE Bank SET Pin_Number = '"+rePin+"' WHERE Pin_Number='"+pinNumber+"'";
                 String query2 = "UPDATE login SET Pin_Number = '"+rePin+"' WHERE Pin_Number='"+pinNumber+"'";
                 String query3 = "UPDATE signupthree SET Pin_Number = '"+rePin+"' WHERE Pin_Number='"+pinNumber+"'";
-
+                JOptionPane.showMessageDialog(null, "PIN Change Successfully");
                 DC.st.executeUpdate(query1);
                 DC.st.executeUpdate(query2);
                 DC.st.executeUpdate(query3);
 
-                JOptionPane.showMessageDialog(null, "PIN Change Successfully");
+
 
                 //Now the Update Pin in DATABASE
                 setVisible(false);

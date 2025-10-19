@@ -244,7 +244,7 @@ public class SignUpThree extends JFrame implements ActionListener{
                     DC.st.executeUpdate(query1);
                     DC.st.executeUpdate(query2);
                     JOptionPane.showMessageDialog(null, "Form Data store on Database");
-                    JOptionPane.showMessageDialog(null, "Card Number"+cardNumber+" \n Pin Number "+pinNumber);
+                    JOptionPane.showMessageDialog(null, "Card Number : "+cardNumber+" \n Pin Number : "+pinNumber);
                     //For User Information like(cardNumber, pinNumber, formno)
 
                     //todo :: Abhi m chahta hu ki jaise hi user new SignUp kar le to uske baad uske pass automatic hi login page fir se open hoke aa jaaye
